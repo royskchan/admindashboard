@@ -1,13 +1,13 @@
 import { createContext, useContext, useState } from "react";
 
-type Lang = "en" | "zh";
+type I18nLang = "en" | "zh";
 
 type I18nTranlate = {
   [key: string]: string;
 };
 
 type I18nResouce = {
-  [lang in Lang]: I18nTranlate;
+  [lang in I18nLang]: I18nTranlate;
 };
 
 const resouce: I18nResouce = {
@@ -20,13 +20,13 @@ const resouce: I18nResouce = {
 };
 
 interface I18nContextType {
-  lang: Lang;
-  setLang: (lang: Lang) => void;
+  lang: I18nLang;
+  setLang: (lang: I18nLang) => void;
 }
 
 const INITIAL_VALUE: I18nContextType = {
   lang: "en",
-  setLang: (lang: Lang) => {},
+  setLang: (lang: I18nLang) => {},
 };
 
 export const I18nContext = createContext(INITIAL_VALUE);
@@ -36,7 +36,7 @@ interface ProviderProps {
 }
 
 export const I18nContextProvider = ({ children }: ProviderProps) => {
-  const [lang, setLang] = useState<Lang>("en");
+  const [lang, setLang] = useState<I18nLang>("en");
 
   return (
     <I18nContext.Provider value={{ lang, setLang }}>
@@ -46,9 +46,9 @@ export const I18nContextProvider = ({ children }: ProviderProps) => {
 };
 
 interface I18n {
-  lang: Lang;
+  lang: I18nLang;
   i18n: I18nTranlate;
-  translate: (lang: Lang) => void;
+  translate: (lang: I18nLang) => void;
 }
 
 export const useI18n = (): I18n => {

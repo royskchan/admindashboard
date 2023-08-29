@@ -9,7 +9,6 @@ import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
 import { useDarkMode } from "../../context/darkModeContext";
 
 const Navbar = () => {
-  // const { dispatch } = useContext(DarkModeContext);
   const darkMode = useDarkMode();
   return (
     <div className="navbar">

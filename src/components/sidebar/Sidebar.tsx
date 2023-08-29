@@ -13,9 +13,11 @@ import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { Link } from "react-router-dom";
 import { useDarkMode } from "../../context/darkModeContext";
+import { useI18n } from "../../context/I18nContext";
 
 const Sidebar = () => {
   const darkMode = useDarkMode();
+  const { translate } = useI18n();
   return (
     <div className="sidebar">
       <div className="top">
@@ -90,8 +92,20 @@ const Sidebar = () => {
         </ul>
       </div>
       <div className="bottom">
-        <div className="colorOption" onClick={() => darkMode.light()}></div>
-        <div className="colorOption" onClick={() => darkMode.dark()}></div>
+        <div
+          className="colorOption"
+          onClick={() => {
+            darkMode.light();
+            translate("en");
+          }}
+        ></div>
+        <div
+          className="colorOption"
+          onClick={() => {
+            darkMode.dark();
+            translate("zh");
+          }}
+        ></div>
       </div>
     </div>
   );

@@ -13,9 +13,11 @@ type I18nResouce = {
 const resouce: I18nResouce = {
   en: {
     greeting: "Hello",
+    label: "Delivery",
   },
   zh: {
     greeting: "你好",
+    label: "運送",
   },
 };
 

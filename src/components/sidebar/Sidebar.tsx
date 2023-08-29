@@ -17,7 +17,7 @@ import { useI18n } from "../../context/I18nContext";
 
 const Sidebar = () => {
   const darkMode = useDarkMode();
-  const { translate } = useI18n();
+  const { i18n, translate } = useI18n();
   return (
     <div className="sidebar">
       <div className="top">
@@ -54,7 +54,7 @@ const Sidebar = () => {
           </li>
           <li>
             <LocalShippingIcon className="icon" />
-            <span>Delivery</span>
+            <span>{i18n.label}</span>
           </li>
 
           <p className="title">USEFUL</p>

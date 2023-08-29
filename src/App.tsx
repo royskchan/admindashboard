@@ -11,9 +11,8 @@ import { useI18n } from "./context/I18nContext";
 
 function App() {
   const darkMode = useDarkMode();
-  const { lang, i18n } = useI18n();
+  const { t } = useI18n();
 
-  console.log(lang);
   return (
     <div className={darkMode.darkMode ? "app dark" : "app"}>
       <BrowserRouter>
@@ -29,7 +28,7 @@ function App() {
                 element={
                   <New
                     inputs={userInputs}
-                    title={`Add New User (${i18n.greeting})`}
+                    title={`Add New User (${t("greeting")})`}
                   />
                 }
               />

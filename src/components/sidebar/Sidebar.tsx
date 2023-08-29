@@ -17,7 +17,7 @@ import { useI18n } from "../../context/I18nContext";
 
 const Sidebar = () => {
   const darkMode = useDarkMode();
-  const { i18n, translate } = useI18n();
+  const { t, i18n } = useI18n();
   return (
     <div className="sidebar">
       <div className="top">
@@ -54,7 +54,7 @@ const Sidebar = () => {
           </li>
           <li>
             <LocalShippingIcon className="icon" />
-            <span>{i18n.label}</span>
+            <span>{t("menu.delivery")}</span>
           </li>
 
           <p className="title">USEFUL</p>
@@ -96,14 +96,14 @@ const Sidebar = () => {
           className="colorOption"
           onClick={() => {
             darkMode.light();
-            translate("en");
+            i18n("en");
           }}
         ></div>
         <div
           className="colorOption"
           onClick={() => {
             darkMode.dark();
-            translate("zh");
+            i18n("zh");
           }}
         ></div>
       </div>

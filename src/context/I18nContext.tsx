@@ -2,22 +2,26 @@ import { createContext, useContext, useState } from "react";
 
 type I18nLang = "en" | "zh";
 
-type I18nTranlate = {
-  [key: string]: string;
+type I18nTranlation = {
+  [key: string]: string | I18nTranlation;
 };
 
-type I18nResouce = {
-  [lang in I18nLang]: I18nTranlate;
+type I18nResource = {
+  [lang in I18nLang]: I18nTranlation;
 };
 
-const resouce: I18nResouce = {
+const resource: I18nResource = {
   en: {
     greeting: "Hello",
-    label: "Delivery",
+    menu: {
+      delivery: "Delivery",
+    },
   },
   zh: {
     greeting: "你好",
-    label: "運送",
+    menu: {
+      delivery: "運送",
+    },
   },
 };
 
@@ -49,15 +53,20 @@ export const I18nContextProvider = ({ children }: ProviderProps) => {
 
 interface I18n {
   lang: I18nLang;
-  i18n: I18nTranlate;
-  translate: (lang: I18nLang) => void;
+  t: (path: string) => string;
+  i18n: (lang: I18nLang) => void;
 }
+
+const getProp = (obj: any, path: string): string => {
+  return path.split(".").reduce((nested, prop) => nested && nested[prop], obj);
+};
 
 export const useI18n = (): I18n => {
   const { lang, setLang } = useContext(I18nContext);
+
   return {
     lang,
-    i18n: resouce[lang],
-    translate: setLang,
+    t: (key) => getProp(resource[lang], key),
+    i18n: setLang,
   };
 };

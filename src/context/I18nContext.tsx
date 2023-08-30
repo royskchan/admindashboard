@@ -2,12 +2,12 @@ import { createContext, useContext, useState } from "react";
 
 type I18nLang = "en" | "zh";
 
-type I18nTransation = {
-  [key: string]: string | I18nTransation;
+type I18nTranslation = {
+  [key: string]: string | I18nTranslation;
 };
 
 type I18nResource = {
-  [lang in I18nLang]: I18nTransation;
+  [lang in I18nLang]: I18nTranslation;
 };
 
 const resource: I18nResource = {
